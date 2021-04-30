@@ -20,6 +20,7 @@ curl -L https://git.io/get_helm.sh | bash
 ### 开始使用
 ```bash
 #先添加常用的chart源
+helm repo add stable https://burdenbear.github.io/kube-charts-mirror/
 helm repo add stable https://kubernetes-charts.storage.googleapis.com
 helm repo add incubator https://kubernetes-charts-incubator.storage.googleapis.com  
 helm repo add bitnami https://charts.bitnami.com/bitnami
