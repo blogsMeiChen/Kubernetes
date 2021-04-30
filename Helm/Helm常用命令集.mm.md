@@ -1,7 +1,7 @@
 ## helm 的使用
 
 ### 手动安装helm
-[访问github下载自己对应的版本](https://github.com/helm/helm/releases)
+[访问github下载自己需要的版本](https://github.com/helm/helm/releases)
 ```bash
 cat >> install_helm.sh<<-'EOF'
 https://get.helm.sh/helm-v3.5.2-linux-amd64.tar.gz
