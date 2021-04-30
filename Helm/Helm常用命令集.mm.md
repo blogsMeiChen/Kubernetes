@@ -39,6 +39,10 @@ helm search repo smiling-penguin
 ```bash
 helm install smiling-penguin
 ```
+### 下载 
+```js
+helm fetch stable/mysql
+```
 ### 删除
 ```bash
 helm delete  smiling-penguin
