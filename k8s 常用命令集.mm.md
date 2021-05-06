@@ -1,7 +1,7 @@
 # k8s 常用命令集
 ## 自动补全工具
 ### kube-shell
-```bash
+```js
     # 必须系统安装有python2.7版本才可安装
     pip install kube-shell
 ```
