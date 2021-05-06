@@ -129,8 +129,8 @@
     kubectl delete pods --all
     # 通过yaml文件删除pods
     kubectl delete -f  pod.yaml
-	# 强制删除pods
-	kubectl delete pods pods name --grace-period=0 --force
+    # 强制删除pods
+    kubectl delete pods pods name --grace-period=0 --force
 ```
 ## 网络
 ```bash
