@@ -4,7 +4,7 @@
 [访问github下载自己需要的版本](https://github.com/helm/helm/releases)
 ```bash
 cat >> install_helm.sh<<-'EOF'
-https://get.helm.sh/helm-v3.5.2-linux-amd64.tar.gz
+wget https://get.helm.sh/helm-v3.5.2-linux-amd64.tar.gz
 tar-xf helm-v3.5.2-linux-amd64.tar.gz
 cd linux-amd64
 sudo cp helm /usr/local/bin
