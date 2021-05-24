@@ -18,6 +18,8 @@ curl -L https://git.io/get_helm.sh | bash
 ```
 
 ### 开始使用
+![image](https://user-images.githubusercontent.com/65467296/119291478-14c21980-bc81-11eb-99c1-9b09c9cb0027.png)
+
 ```bash
 #先添加常用的chart源
 helm repo add stable https://burdenbear.github.io/kube-charts-mirror/
