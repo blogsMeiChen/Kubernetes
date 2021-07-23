@@ -112,7 +112,7 @@
 ```
 ## 编辑
 ```bash
-
+kubectl edit pods ng-ingress-nginx-ingress-controller-78b76bf679-ft74x
 ```
 ## 更新
 ```bash
