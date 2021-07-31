@@ -150,7 +150,7 @@ kubectl edit pods ng-ingress-nginx-ingress-controller-78b76bf679-ft74x
 ```
 ### 初始化
 ```bash
-    kubeadm init 
+    sudo kubeadm init --image-repository=k8s.gcr.io --ignore-preflight-errors=Swap  --apiserver-advertise-address=166.66.66.66 --upload-certs
 ```
 ### 查询配置镜像
 ```bash
