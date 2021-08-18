@@ -57,8 +57,9 @@
 ```
 ### 查询端口号
 ```bash
-    # 查看端口号                             这里是服务中的namespace名称
+    # 查看端口号                           这里的kubernetes-dashboard是k8s中的某个服务名称
     kubectl get service --all-namespaces | grep kubernetes-dashboard
+    kubectl get service -A
     # 查询服务暴漏的端口
     kubectl get svc
 ```
