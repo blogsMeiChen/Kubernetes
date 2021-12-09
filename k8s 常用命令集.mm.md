@@ -1,4 +1,8 @@
 # k8s 常用命令集
+## 监控 kubelet 错误
+```bash
+journalctl -xefu kubelet | egrep ": [F][0-9]" -B 1
+```
 ## 自动补全工具
 ### kube-shell
 ```js
