@@ -157,6 +157,27 @@ kubectl edit pods ng-ingress-nginx-ingress-controller-78b76bf679-ft74x
 ```bash
     sudo kubeadm init  --kubernetes-version=v1.22.2 --image-repository=k8s.gcr.io --ignore-preflight-errors=Swap  --apiserver-advertise-address=166.66.66.66 --upload-certs  --v=5
 ```
+### 污点（taint）
+```
+污点(taint)的组成
+使用kubectl taint命令可以给某个node节点设置污点，node被设置之后就和pod之间存在了一种想斥的关系，可以让node拒绝pod的调度执行，甚至将node已经存在的pod驱逐出去。
+
+每个污点的组成如下：
+`ey=value:effect`
+每个污点有一个key和value作为污点的标签，其中value可以为空，effect描述污点的作用。当前taint effect支持如下三个选项：
+- NoSchedule: 表示k8s将不会将Pod调度到具有该污点的pod上
+- PreferNoSchedule: 表示k8s将尽量避免将Pod调度到具有该污点的node上
+- NoExecute: 表示k8s将不会将Pod调式到具有该污点的Node上，同时会将Node上已经存在的Pod驱逐出去
+
+# 定义一个hostname变量，变量值为hostname （hostname 命令是获取本地主机名称的命令）
+hostname=`hostname`
+# 设置污点(taint)
+kubectl taint nodes ${hostname,,} node-role.kubernetes.io/master:NoSchedule-
+# 去除污点(taint)
+kubectl taint nodes node1 key:NoSchedule-
+[kubectl taint 学习文档](https://blog.frognew.com/2018/05/taint-and-toleration.html)
+
+```
 ### 查询配置镜像
 ```bash
     kubeadm config images list
