@@ -143,7 +143,7 @@ kubectl edit pods ng-ingress-nginx-ingress-controller-78b76bf679-ft74x
 ## 网络
 ```bash
     # 查看pods的网络状态
-    kubectl get pods -o wide
+    kubectl get pods -A -o wide
     # 查看单个name的网络状态
     kubectl get pod --namespace=kube-system -o wide
 ```
