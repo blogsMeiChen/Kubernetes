@@ -121,6 +121,7 @@ kubectl edit pods ng-ingress-nginx-ingress-controller-78b76bf679-ft74x
 ```
 ## 进入容器
  kubectl exec vimo-auth-server-554c8bfd5-6d9l7 -it  -- bash
+ 
 ## 更新
 ```bash
     # 更新
