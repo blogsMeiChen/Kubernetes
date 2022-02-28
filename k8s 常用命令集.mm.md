@@ -200,6 +200,7 @@ kubectl taint nodes node1 key:NoSchedule-
     kubectl get pods --output=wide
     kubectl get service --namespace=kube-system
     kubectl get deployment --namespace=kube-system
+    kubectl config view --minify --raw
 
 ```
 
