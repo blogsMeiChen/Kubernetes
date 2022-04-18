@@ -8,4 +8,5 @@ helm pull jenkinsci/jenkins
 # 这里有一步解压的过程，然后进入Jenkins目录进行部署
 # 部署
 kubectl create ns devops
+
 helm install jenkins -n devops .
