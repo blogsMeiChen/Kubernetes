@@ -1,7 +1,7 @@
 [文档引用出处 ](https://mp.weixin.qq.com/s/wPo0kpeUDu8amGquIdXUCQ)
 
-
 helm repo add jenkinsci https://charts.jenkins.io
+
 helm repo update
 # 我习惯把CHART下载到本地，方便管理
 helm pull jenkinsci/jenkins
