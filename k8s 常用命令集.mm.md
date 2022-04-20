@@ -127,11 +127,13 @@ NAMESPACE            NAME                                             READY   ST
     kubectl get nodes --show-labels
 ```
 ## 创建
-### apply
+
 ```bash
-    # 将pod.yaml 创建到pod中
-    kubectl apply -f pods.yaml
-    kubectl create -f pods.yaml
+# 将pod.yaml 创建到pod中
+# apply
+kubectl apply -f pods.yaml
+# create
+kubectl create -f pods.yaml
 ```
 ## 编辑
 ```bash
