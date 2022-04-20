@@ -39,11 +39,11 @@ journalctl -xefu kubelet | egrep ": [F][0-9]" -B 1
 NAMESPACE            NAME                                             READY   STATUS      RESTARTS   AGE
 参数讲解：
 
-    NAMESPACE：命令空间
+    NAMESPACE：命令空间, 属于当前命令空间的所有pod都会显示出来
     NAME：名称, 列出了集群中 Deployment 的名称。
     READY：副本, 显示应用程序的可用的“副本”数。显示的模式是“就绪个数/期望个数”。
-    STATUS：状态
-    RESTARTS：重新启动
+    STATUS：状态, 显示应用当前的运行状态
+    RESTARTS：重新启动, 显示当前应用的重启次数
     AGE：运行时间, 显示应用程序运行的时间。
 ```
 
