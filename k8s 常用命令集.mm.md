@@ -33,6 +33,8 @@ journalctl -xefu kubelet | egrep ": [F][0-9]" -B 1
 # kubectl get pods -A 输出的几个字段各自代表的意思
 
 ![image](https://user-images.githubusercontent.com/65467296/164166808-bdae816b-136a-4c67-be55-bc8fc9339a3d.png)
+
+```bash
 命令空间             名称                                              副本     状态       重新启动   时间
 NAMESPACE            NAME                                             READY   STATUS      RESTARTS   AGE
 参数讲解：
@@ -43,7 +45,7 @@ NAMESPACE            NAME                                             READY   ST
     STATUS：状态
     RESTARTS：重新启动
     AGE：运行时间, 显示应用程序运行的时间。
-
+```
 
 ## 查询
 ### pods
