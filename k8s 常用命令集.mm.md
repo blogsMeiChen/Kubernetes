@@ -29,6 +29,22 @@ journalctl -xefu kubelet | egrep ": [F][0-9]" -B 1
     #tab命令只在使用完整的kubectl 命令起作用，使用别名k 时不起作用，修补：
     source <( kubectl completion bash | sed 's/kubectl/k/g' )  #写入 .bashr
 ```
+
+# kubectl get pods -A 输出的几个字段各自代表的意思
+
+![image](https://user-images.githubusercontent.com/65467296/164166808-bdae816b-136a-4c67-be55-bc8fc9339a3d.png)
+命令空间             名称                                              副本     状态       重新启动   时间
+NAMESPACE            NAME                                             READY   STATUS      RESTARTS   AGE
+参数讲解：
+
+    NAMESPACE：命令空间
+    NAME：名称, 列出了集群中 Deployment 的名称。
+    READY：副本, 显示应用程序的可用的“副本”数。显示的模式是“就绪个数/期望个数”。
+    STATUS：状态
+    RESTARTS：重新启动
+    AGE：运行时间, 显示应用程序运行的时间。
+
+
 ## 查询
 ### pods
 ```bash
@@ -139,8 +155,10 @@ kubectl edit pods ng-ingress-nginx-ingress-controller-78b76bf679-ft74x
     kubectl delete -f  pod.yaml
     # 没有yaml文件 强制删除pods
     kubectl delete pods  name --grace-period=0 --force
-    # 
-    kubectl delete deployments.apps  NAME
+    # 命令   参数                        命令空间    名称
+    kubectl delete deployments.apps -n  NAMESPACE   NAME
+    # 示例：
+    kubectl delete deployments.apps -n default vimo-stable-mysql
     
 ```
 ## 网络
