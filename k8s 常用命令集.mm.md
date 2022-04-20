@@ -137,8 +137,11 @@ kubectl edit pods ng-ingress-nginx-ingress-controller-78b76bf679-ft74x
     kubectl delete pods --all
     # 通过yaml文件删除pods
     kubectl delete -f  pod.yaml
-    # 强制删除pods
-    kubectl delete pods pods name --grace-period=0 --force
+    # 没有yaml文件 强制删除pods
+    kubectl delete pods  name --grace-period=0 --force
+    # 
+    kubectl delete deployments.apps  NAME
+    
 ```
 ## 网络
 ```bash
