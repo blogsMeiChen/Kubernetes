@@ -138,3 +138,9 @@ myapp/
 │       └── test-connection.yaml
 └── values.yaml # 文件也导入到了模板。 这个文件包含了chart的默认值。这些值会在用户执行 helm install 或者 helm upgrade时被覆盖
 ```
+
+## 暴漏端口号
+```bash
+helm install vimo ./vimo --set  vimo-front.service.nodePort=32006
+```
+
