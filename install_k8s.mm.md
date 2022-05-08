@@ -14,7 +14,7 @@
 
 ## 解决国内无法拉取k8s基础组件问题
 
-## 解决方法一
+# 解决方法一
 
 #### 先查看k8s需要的基础组件镜像名称
 
@@ -94,7 +94,7 @@ To see the stack trace of this error execute with --v=5 or higher
 
 
 
-### 解决方法
+## 解决方法
 
 `sudo kubeadm init --config kubeadm.conf  --ignore-preflight-errors=Swap`
 
@@ -109,7 +109,7 @@ sudo find / -name 10-kubeadm.conf
 
 
 
-## 解决方法二
+# 解决方法二
 
 ### 使用阿里云镜像
 
