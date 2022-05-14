@@ -33,14 +33,18 @@ k8s.gcr.io/coredns:1.6.7
 ### 生成配置文件
 
 ```bas
-touch kubeadm.conf
-sudo kubeadm config print init-defaults ClusterConfiguration > kubeadm.conf
+touch kubeadm-config.yaml
+sudo kubeadm config print init-defaults  > kubeadm-config.yaml
 ```
+
+参数详解：
+- init-defaults: 显示init默认的初始化文件并打印到kubeadm-config.yaml文件中，这样就拿到了kubeadm默认的初始化模板
+
 
 ### 生成的配置文件中需要修改一下两项参数
 
 ```bash
-m@m:~$ grep 'imageRepository\|kubernetesVersion\|advertiseAddress' kubeadm.conf
+m@m:~$ grep 'imageRepository\|kubernetesVersion\|advertiseAddress' kubeadm-config.yaml
 advertiseAddress: 1.2.3.4   (修改成成0.0.0.0)
 imageRepository: k8s.gcr.io (这里修改成国内k8s镜像仓库)
 kubernetesVersion: v1.18.0 （这里是自己当前安装k8s版本）
@@ -50,7 +54,7 @@ kubernetesVersion: v1.18.0 （这里是自己当前安装k8s版本）
 ### 修改之后的参数
 
 ```bash
-m@m:~$ grep 'imageRepository\|kubernetesVersion\|advertiseAddress' kubeadm.conf
+m@m:~$ grep 'imageRepository\|kubernetesVersion\|advertiseAddress' kubeadm-config.yaml
 advertiseAddress: 0.0.0.0
 imageRepository: registry.aliyuncs.com/google_containers
 kubernetesVersion: v1.18.5
@@ -59,7 +63,7 @@ kubernetesVersion: v1.18.5
 ### 再次查看kubeadm config 所需要的镜像
 
 ```bash
-m@m:~$ sudo kubeadm config images list --config kubeadm.conf
+m@m:~$ sudo kubeadm config images list --config kubeadm-config.yaml
 
 registry.aliyuncs.com/google_containers//kube-apiserver:v1.18.5advertiseAddress
 registry.aliyuncs.com/google_containers//kube-controller-manager:v1.18.5
@@ -72,16 +76,16 @@ registry.aliyuncs.com/google_containers//coredns:1.6.7
 
 ### 拉取镜像
 
-`sudo kubeadm config images pull --config kubeadm.conf`
+`sudo kubeadm config images pull --config kubeadm-config.yaml`
 
 ### 初始化
 
-`sudo kubeadm  init --config kubeadm.conf`
+`sudo kubeadm  init --config kubeadm-config.yaml`
 
 ### 初始化报错
 
 ```bash
-m@m:~$ sudo kubeadm init --config kubeadm.conf
+m@m:~$ sudo kubeadm init --config kubeadm-config.yaml
 W0721 10:39:10.003330    7325 configset.go:202] WARNING: kubeadm cannot validate component configs for API groups [kubelet.config.k8s.io kubeproxy.config.k8s.io]
 [init] Using Kubernetes version: v1.18.5
 [preflight] Running pre-flight checks
