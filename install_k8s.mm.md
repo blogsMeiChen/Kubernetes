@@ -65,13 +65,13 @@ kubernetesVersion: v1.18.5
 ```bash
 m@m:~$ sudo kubeadm config images list --config kubeadm-config.yaml
 
-registry.aliyuncs.com/google_containers//kube-apiserver:v1.18.5advertiseAddress
-registry.aliyuncs.com/google_containers//kube-controller-manager:v1.18.5
-registry.aliyuncs.com/google_containers//kube-scheduler:v1.18.5
-registry.aliyuncs.com/google_containers//kube-proxy:v1.18.5
-registry.aliyuncs.com/google_containers//pause:3.2
-registry.aliyuncs.com/google_containers//etcd:3.4.3-0
-registry.aliyuncs.com/google_containers//coredns:1.6.7
+registry.aliyuncs.com/google_containers/kube-apiserver:v1.18.5advertiseAddress
+registry.aliyuncs.com/google_containers/kube-controller-manager:v1.18.5
+registry.aliyuncs.com/google_containers/kube-scheduler:v1.18.5
+registry.aliyuncs.com/google_containers/kube-proxy:v1.18.5
+registry.aliyuncs.com/google_containers/pause:3.2
+registry.aliyuncs.com/google_containers/etcd:3.4.3-0
+registry.aliyuncs.com/google_containers/coredns:1.6.7
 ```
 
 ### 拉取镜像
@@ -100,7 +100,7 @@ To see the stack trace of this error execute with --v=5 or higher
 
 ## 解决方法
 
-`sudo kubeadm init --config kubeadm.conf  --ignore-preflight-errors=Swap`
+`sudo kubeadm init --config kubeadm-config.yaml  --ignore-preflight-errors=Swap`
 
 ### 报错信息
 
