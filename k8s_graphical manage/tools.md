@@ -5,8 +5,10 @@
 
 # kuboard 安装
 ` kubectl apply -f https://addons.kuboard.cn/kuboard/kuboard-v3-swr.yaml`
+
 # kuboard 卸载
 ` kubectl delete -f https://addons.kuboard.cn/kuboard/kuboard-v3.yaml`
+
 # 清理遗留数据
 `rm -rf /usr/share/kuboard`
 
@@ -15,3 +17,10 @@
 `docker exec -it kuboard /bin/bash `
 - 执行重置密码的命令
 `kuboard-admin reset-password`
+
+# 访问
+
+ip:30080
+
+用户：admin
+密码：Kuboard123
