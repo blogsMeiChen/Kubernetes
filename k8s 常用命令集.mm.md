@@ -229,5 +229,9 @@ kubectl taint nodes node1 key:NoSchedule-
     kubectl config view --minify --raw
 
 ```
+### 查询证书过期时间
+```bash
+kubeadm alpha certs check-expiration
+```
 ### 集群中列出所有运行的容器的镜像
 [kubernetes官网](https://kubernetes.io/zh/docs/tasks/access-application-cluster/list-all-running-container-images/)
