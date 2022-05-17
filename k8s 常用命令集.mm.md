@@ -233,5 +233,7 @@ kubectl taint nodes node1 key:NoSchedule-
 ```bash
 kubeadm alpha certs check-expiration
 ```
+[自动更新证书](https://kubernetes.io/zh/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/#%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%AF%81%E4%B9%A6)
+
 ### 集群中列出所有运行的容器的镜像
 [kubernetes官网](https://kubernetes.io/zh/docs/tasks/access-application-cluster/list-all-running-container-images/)
