@@ -202,6 +202,8 @@ kubectl exec vimo-auth-server-554c8bfd5-6d9l7 -it  -- bash
 hostname=`hostname`
 # 设置污点(taint)
 kubectl taint nodes ${hostname,,} node-role.kubernetes.io/master:NoSchedule-
+kubectl taint nodes --all node-role.kubernetes.io/master-
+
 # 去除污点(taint)
 kubectl taint nodes node1 key:NoSchedule-
 [kubectl taint 学习文档](https://blog.frognew.com/2018/05/taint-and-toleration.html)
