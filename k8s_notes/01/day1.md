@@ -28,3 +28,25 @@
 
 - emptyDir：顾名思义，emptyDir 是指一个纯净的空目录,这个目录映射到主机的一个临时目录下，pod 中的容器都可以读写这个目录，其生命周期和 pod 完全一致，如果 pod 销毁，那么存储卷也会同时销毁，
 - emptyDir：主要用于存放和共享 pod 的不同容器之间在运行过程中产生的文件。
+
+----
+## Pod 的基本操作
+- 创建Pod
+```bash
+tee >> examplpod.yml <<'EOF'
+
+apiVersion: v1  # 表示使用的API版本。v1表示使用KubernetesAPI的稳定版本。
+kind: 表示要创建的资源对象，这里使用关键字Pod
+metadata: 表示该资源对象的元数据。一个资源对象可拥有多个元数据，
+  name: 其中一项是name，它表示当前资源的名称。
+spec: 表示该资源对象的具体设置。其中containers表示容器的集合，这里只是设置了一个容器，该容器的属性如下。
+   name: 要创建的容器名称。
+   image: 容器的镜像地址。
+   imagePullPolicy: 镜像的下载策略，支持3种imagePullPolicy,如下所示。
+    # Always: 不管镜像是否存在都会进行一次拉取。
+    # Never: 不管镜像是否存在都不会镜像拉取。
+    # IfNotPresent: 只有镜像不存在时，才会进行拉取。
+   command: 容器的启动命令列表(不配置的话，使用镜像内部的命令)
+   args: 启动参数列表(在本例中是输出文字"Hello Kubernetes!" 并休眠3200s)
+   EOF
+   ```
