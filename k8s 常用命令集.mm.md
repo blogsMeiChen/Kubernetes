@@ -198,10 +198,9 @@ kubectl exec vimo-auth-server-554c8bfd5-6d9l7 -it  -- bash
 - PreferNoSchedule: 表示k8s将尽量避免将Pod调度到具有该污点的node上
 - NoExecute: 表示k8s将不会将Pod调式到具有该污点的Node上，同时会将Node上已经存在的Pod驱逐出去
 
-# 定义一个hostname变量，变量值为hostname （hostname 命令是获取本地主机名称的命令）
-hostname=`hostname`
+
 # 设置污点(taint)
-kubectl taint nodes ${hostname,,} node-role.kubernetes.io/master:NoSchedule-
+kubectl taint nodes `whoami` node-role.kubernetes.io/master:NoSchedule-
 kubectl taint nodes --all node-role.kubernetes.io/master-
 
 # 去除污点(taint)
