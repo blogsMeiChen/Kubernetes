@@ -50,3 +50,8 @@ spec: 表示该资源对象的具体设置。其中containers表示容器的集�
    args: 启动参数列表(在本例中是输出文字"Hello Kubernetes!" 并休眠3200s)
    EOF
    ```
+## kubernetes pod 的几种状态
+-  Evicted
+-  ErrImageNeverPull 
+-  Running
+-  
