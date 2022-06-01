@@ -88,8 +88,18 @@ NAMESPACE            NAME                                             READY   ST
 
 ### 查询镜像
 ```bash
-    # 格式化输出，使其仅仅包含容器镜像名称，这将递归解析返回的json对象中的image字段。
-    kubectl get pods -o jsonpath={..image}
+    # 输出集群中所有正在使用中容器的镜像名称
+    kubectl get pods --all-namespaces -o jsonpath="{..image}" |tr -s '[[:space:]]' '\n' |sort |uniq -c
+    # 输出某个命令空间正在使用中的容器镜像名称
+    kubectl get pods -n vimo  -o jsonpath="{..image}" |tr -s '[[:space:]]' '\n' |sort |uniq -c
+    # 参数详解：
+        使用 kubectl get pods --all-namespaces 获取所有命名空间下的所有 Pod
+        使用 -o jsonpath={..image} 来格式化输出，以仅包含容器镜像名称。 这将以递归方式从返回的 json 中解析出 image 字段。
+        参阅 jsonpath 说明 获取更多关于如何使用 jsonpath 的信息。
+        使用标准化工具来格式化输出：tr, sort, uniq
+        使用 tr 以用换行符替换空格
+        使用 sort 来对结果进行排序
+        使用 uniq 来聚合镜像计数
 ```
 
 ### 查询组件状态
