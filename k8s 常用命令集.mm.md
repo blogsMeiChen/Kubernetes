@@ -15,7 +15,7 @@ journalctl -xefu kubelet | egrep ": [F][0-9]" -B 1
     # Ubuntu 配置kubernetes命令自动补全
     sudo apt-get install -y bash-completion
     # CntOS 配置kubernetts命令自动补全
-    yum -y install bash-completion
+    yum -y install bash-completion mlocate
     locate bash_completion
     source /usr/share/bash-completion/bash_completion
     source <(kubectl completion bash)
