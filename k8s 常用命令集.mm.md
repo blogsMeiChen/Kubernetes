@@ -137,6 +137,14 @@ NAMESPACE            NAME                                             READY   ST
     # 证你选择节点有distype=ssd标签
     kubectl get nodes --show-labels
 ```
+## 存储PV
+kubectl get pv
+kubectl get pvc
+kubectl get pvc -n vimo
+## 强制删除PV, PVC
+kubectl patch pv vimo-data  -p '{"metadata":{"finalizers":null}}'
+kubectl patch pvc vimo-data  -p '{"metadata":{"finalizers":null}}'
+
 ## 创建
 
 ```bash
@@ -171,11 +179,17 @@ kubectl exec vimo-auth-server-554c8bfd5-6d9l7 -it  -- bash
     kubectl delete -f  pod.yaml
     # 没有yaml文件 强制删除pods
     kubectl delete pods  name --grace-period=0 --force
+    # 批量删除
+    kubectl get pods -A | grep default | awk '{print $1" " $2  " --force --grace-period=0 "}' |xargs  kubectl delete pods -n
+    
     # 命令   参数                        命令空间    名称
     kubectl delete deployments.apps -n  NAMESPACE   NAME
-    # 示例：
+    # 示例单个删除：
     kubectl delete deployments.apps -n default vimo-stable-mysql
+    示例指定指定命令空间永久删除删除：
+    kubectl get deployments.apps  | awk '{print $1}'| xargs kubectl delete deployments.apps
     
+   
 ```
 ## 网络
 ```bash
