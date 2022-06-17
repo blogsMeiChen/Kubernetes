@@ -138,13 +138,16 @@ NAMESPACE            NAME                                             READY   ST
     kubectl get nodes --show-labels
 ```
 ## 存储PV
+```bash
 kubectl get pv
 kubectl get pvc
 kubectl get pvc -n vimo
+```
 ## 强制删除PV, PVC
+```bash
 kubectl patch pv vimo-data  -p '{"metadata":{"finalizers":null}}'
 kubectl patch pvc vimo-data  -p '{"metadata":{"finalizers":null}}'
-
+```
 ## 创建
 
 ```bash
