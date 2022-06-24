@@ -266,3 +266,8 @@ kubeadm alpha certs check-expiration
 
 ### 集群中列出所有运行的容器的镜像
 [kubernetes官网](https://kubernetes.io/zh/docs/tasks/access-application-cluster/list-all-running-container-images/)
+
+### Kubelet各个端口的作用
++ kubelet 默认监听四个端口，分别为： 10250 、10255、10248、4194
+    + 10250：kubelet API：kubelet server 与 apiserver 通信的端口，定期请求 apiserver 获取自己所应当处理的任务，通过该端口可以访问获取 node 资源以及状态。kubectl查看pod的日志和cmd命令，都是通过kubelet端口10250访问，如果本地没有开启10250端口的话：
+
