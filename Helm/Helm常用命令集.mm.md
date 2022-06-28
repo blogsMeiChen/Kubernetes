@@ -141,6 +141,6 @@ myapp/
 
 ## 暴漏端口号
 ```bash
-helm install vimo ./vimo --set=vimo-front.service.nodePort=32006
+helm install vimo ./vimo --set=vimo-frontend.vimo-front.service.nodePort=32000
 ```
 
