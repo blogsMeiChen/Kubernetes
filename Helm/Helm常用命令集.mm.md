@@ -48,24 +48,60 @@ helm repo update
 #### 查询
 ```bash
 helm search repo smiling-penguin
+
+helm ls -all acme-stocks
 ```
 
+#### 创建
+```bash
+helm create acme
+```
 #### 安装
 ```bash
 helm install smiling-penguin
+
+helm install --dry-run \
+--name acme-stocks ./acme
+
+helm install --dry-run --debug ./mychart
 ```
+
+#### 验证
+```bash
+helm lint
+```
+
 #### 下载 
 ```bash
 helm fetch stable/mysql
 ```
+
 #### 删除
 ```bash
 helm delete  smiling-penguin
+
+helm del --purge acme-stocks
 ```
 
 #### 打包
 ```bash
 helm package .
+```
+
+#### 升级
+
+```bsh
+helm  upgrade
+```
+
+#### 回滚
+```bash
+helm  rollback
+```
+
+#### 模板
+```bash
+helm template ./mychart | kubectl apply --dry-run -f -
 ```
 #### 卸载
 ```bash
@@ -75,37 +111,18 @@ helm uninstall  smiling-penguin
 ```bash
 helm status smiling-penguin
 ```
+
+#### 历史
+```bash
+helm history
+```
+
 #### 搭建本地仓库
 ```bash
 github 二进制安装包
 [helm-push](https://github.com/chartmuseum/helm-push)
 
 helm plugin install https://github.com/chartmuseum/helm-push.git
-
-```
-
-```bash
-# 创建
-helm create acme
-# 验证
-helm lint
-# 安装
-helm install --dry-run \
---name acme-stocks ./acme
----
-helm install --dry-run --debug ./mychart
-# 查询
-helm ls -all acme-stocks
-# 删除
-helm del --purge acme-stocks
-# 模板
-helm template ./mychart | kubectl apply --dry-run -f -
-# 升级
-helm  upgrade 
-# 回滚
-helm  rollback
-# 历史
-helm history 
 ```
 
 ### helm puls 插件推荐 
