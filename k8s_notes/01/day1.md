@@ -71,3 +71,7 @@ spec: 表示该资源对象的具体设置。其中containers表示容器的集�
 |CrashLoopBackOff|
 |PodInitializing|
 |ContainerCreating|
+|CreateContainerError|
+|UnexpectedAdmissionError|
+|nodeAffinity|
+
