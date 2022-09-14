@@ -215,6 +215,15 @@ kubectl exec -ti vimo-mysql-7c597cf94d-pwbsf -n vimo bash
 ```bash
     sudo kubeadm init  --kubernetes-version=v1.22.2 --image-repository=k8s.gcr.io --ignore-preflight-errors=Swap  --apiserver-advertise-address=166.66.66.66 --upload-certs  --v=5
 ```
+初始化失败查看kubelet信息
+
+`journalctl -xeu kubelet`
+
+`systemctl status kubelet`
+
+`docker ps -a | grep kube | grep -v pause`
+
+
 ### 污点（taint）
 ```
 污点(taint)的组成
