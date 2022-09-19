@@ -15,6 +15,22 @@
 - Node 管理容器
     Node则是kubernetes集群中的各个工作节点，Node由Master管理，提供运行容器所需要的各个环境，对容器进行实际的控制，而这些容器会提供实际的应用服务。
 
+## kubernetes组件
+
+共计组件：7个
+Master:
+
+- kube-apiserver：
+- kube-scheduler:
+- kube-controller-manager:
+- etcd：是一个兼顾一致性与高可用性的键值数据库，用来保存kubernetes所有集群数据的后台数据库。
+
+Node:
+
+- kubelet:
+- kube-proxy:
+- container Runtime:
+
 ## Kubernetes 存储与配置
 
 > 在 Kubermetes 中定义的存储卷主要分为 4 种类型
@@ -74,4 +90,3 @@ spec: 表示该资源对象的具体设置。其中containers表示容器的集�
 |CreateContainerError|
 |UnexpectedAdmissionError|
 |nodeAffinity|
-
