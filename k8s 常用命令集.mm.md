@@ -270,7 +270,14 @@ kubectl taint nodes node1 key:NoSchedule-
 ```
 ### 查询证书过期时间
 ```bash
-kubeadm alpha certs check-expiration
+# 查看证书有效期
+sudo kubeadm alpha certs check-expiration
+# 更新全部证书
+kubeadm alpha certs renew all
+# 用户权限更新
+cp-i /etc/kubernetes/admin.conf SHOME/.kube/config
+# 重启kubelet apiserver
+docker ps | grep -E'k8s_kube-apiserver|k8s_kube-controller-manager|k8s_kube-scheduler|k8s_etcd_etcd' awk-F '{print $1}'|xargs docker restart
 ```
 [自动更新证书](https://kubernetes.io/zh/docs/tasks/administer-cluster/kubeadm/kubeadm-certs/#%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0%E8%AF%81%E4%B9%A6)
 
