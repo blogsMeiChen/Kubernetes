@@ -268,7 +268,7 @@ kubectl taint nodes node1 key:NoSchedule-
     kubectl config view --minify --raw
 
 ```
-### 查询证书过期时间
+### 证书到期解决方法
 ```bash
 # 查看证书有效期
 sudo kubeadm alpha certs check-expiration
