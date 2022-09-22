@@ -86,7 +86,6 @@ spec: 表示该资源对象的具体设置。其中containers表示容器的集�
 |ErrImagePull|
 |Error|
 |Completed|
-|ImagePullBackOff|
 |Pending|
 |CrashLoopBackOff|
 |PodInitializing|
@@ -94,3 +93,8 @@ spec: 表示该资源对象的具体设置。其中containers表示容器的集�
 |CreateContainerError|
 |UnexpectedAdmissionError|
 |nodeAffinity|
+|ImagePullBackOff|状态可能出现的原因如下：
+  + 镜像不存在
+  + 镜像或者tag名不正确
+  + 图像是私有镜像，并且存在身份证人失败
+  + 容器注册表限制
