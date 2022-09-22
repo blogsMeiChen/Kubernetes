@@ -20,9 +20,13 @@
 共计组件：7个
 Master:
 
-- kube-apiserver：
-- kube-scheduler:
-- kube-controller-manager:
+- kube-APIServer: 默认端口：6443和127.0.0.1的8080，是最重要的核心组件之一，主要提供的功能有 
+	1. 集群管理的REST API接口，包括认证授权、数据校验以及集群状态变更等。
+	2. 提供其他模块之间的数据交付和通行的枢纽(其他模块通过API Server查询或修改数据，只有API Server才直接操作etcd)
+    
+- kube-scheduler: 默认端口：10259，负责分配调度Pod到集群内的节点上，它监听kube-apiserver、查询还未分配Node的Pod、然后根据调度策略为这些Pod分配节点(更新Pod的NodeName字段)
+
+- kube-controller-manager: 默认端口：10257
 - etcd：是一个兼顾一致性与高可用性的键值数据库，用来保存kubernetes所有集群数据的后台数据库。
 
 Node:
