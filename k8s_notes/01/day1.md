@@ -95,21 +95,19 @@ spec: 表示该资源对象的具体设置。其中containers表示容器的集�
 | 状态     |     释义   |
 | :-------- | :--------: |
 |ErrImageNeverPull   |
-|Running|
+|Running|Pod内所有容器均已创建，且至少有一个容器处于运行状态、正在启动状态或者正在重启状态。|
 |Evicted|
 |ErrImagePull|
 |Error|
 |Completed|
-|Pending|
+|Pending|APISErver已经创建该Pod，且Pod内还有一个或多个容器的镜像没有创建，包括正在下载镜像的过程|
 |CrashLoopBackOff|
 |PodInitializing|
 |ContainerCreating|
 |CreateContainerError|
 |UnexpectedAdmissionError|
+|Failed| Pod内所有容器均已退出，但至少一个容器退出为失败状态|
 |nodeAffinity|
-|ImagePullBackOff|状态可能出现的原因如下：
-
-- 镜像不存在
-- 镜像或者tag名不正确
-- 图像是私有镜像，并且存在身份证人失败
-- 容器注册表限制
+|Succeeded|Pod内所有容器均已退出，但至少有一个容器退出为失败状态。|
+|Unknown| 由于某种原因无法获取该Pod状态，可能由于网络通信不畅导致。
+|ImagePullBackOff|状态可能出现的原因如，镜像不存在，镜像或者tag名不正确，图像是私有镜像，并且，在身份证人失败，容器注册表限制
