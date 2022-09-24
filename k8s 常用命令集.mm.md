@@ -165,6 +165,10 @@ kubectl edit pods ng-ingress-nginx-ingress-controller-78b76bf679-ft74x
 ```bash
 kubectl exec vimo-auth-server-554c8bfd5-6d9l7 -it  -- bash
 kubectl exec -ti vimo-mysql-7c597cf94d-pwbsf -n vimo bash
+# 进入kube-system 命名空间的容器方法
+                    pod 名称        命令空间
+kubectl exec  -it   etcd-smore  -n kube-system -- /bin/sh
+
 ```
 ## 更新
 ```bash
