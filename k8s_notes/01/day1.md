@@ -17,17 +17,31 @@
 
 ## kubernetes组件
 
+[官网核心组件介绍](https://feisky.gitbooks.io/kubernetes/content/components/components.html)
+
 共计组件：7个
 Master:
 
-- kube-APIServer: 默认端口：6443和127.0.0.1的8080，是最重要的核心组件之一，主要提供的功能有 
-	1. 集群管理的REST API接口，包括认证授权、数据校验以及集群状态变更等。
-	2. 提供其他模块之间的数据交付和通行的枢纽(其他模块通过API Server查询或修改数据，只有API Server才直接操作etcd)
-    
+- kube-APIServer: 默认端口：6443和127.0.0.1的8080，是最重要的核心组件之一，主要提供的功能有
+
+ 1. 集群管理的REST API接口，包括认证授权、数据校验以及集群状态变更等。
+ 2. 提供其他模块之间的数据交付和通行的枢纽(其他模块通过API Server查询或修改数据，只有API Server才直接操作etcd)
+
 - kube-scheduler: 默认端口：10259，负责分配调度Pod到集群内的节点上，它监听kube-apiserver、查询还未分配Node的Pod、然后根据调度策略为这些Pod分配节点(更新Pod的NodeName字段)
 
-- kube-controller-manager: 默认端口：10257
+- kube-controller-manager:
+-
 - etcd：是一个兼顾一致性与高可用性的键值数据库，用来保存kubernetes所有集群数据的后台数据库。
+  - 主要功能：
+    - 基本的key-value存储
+    - 监听机制
+    - key的过期及续约机制，用于监控和服务发现
+    - 原子CAS和CAD，用于分布式锁和leader选举
+      - 当前Etcd的raft 实现保证了多节点数据之间的同步，但明显的一个问题就是扩充节点不能解决容量问题。
+      - 要想解决容量问题，只能进行分片，但分片后如何使用raft同步数据？
+      - 只能实现一个multiple group raft，每个分片实时同步。当前实现了 multiple group raft 的有 TiKV 和 Cockroachdb，但尚未一个独立通用的。
+      - 理论上来说，如果有了这套 multiple group raft，后面挂个持久化的 kv 就是一个分布式 kv 存储，挂个内存 kv 就是分布式缓存，挂个 lucene 就是分布式搜索引擎。
+      - 当然这只是理论上，要真实现复杂度还是不小。
 
 Node:
 
@@ -94,7 +108,8 @@ spec: 表示该资源对象的具体设置。其中containers表示容器的集�
 |UnexpectedAdmissionError|
 |nodeAffinity|
 |ImagePullBackOff|状态可能出现的原因如下：
-  + 镜像不存在
-  + 镜像或者tag名不正确
-  + 图像是私有镜像，并且存在身份证人失败
-  + 容器注册表限制
+
+- 镜像不存在
+- 镜像或者tag名不正确
+- 图像是私有镜像，并且存在身份证人失败
+- 容器注册表限制
