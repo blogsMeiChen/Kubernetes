@@ -111,6 +111,18 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 sudo kubectl get po -A
 
+
+# install calico 
+
+wget https://docs.projectcalico.org/v3.14/manifests/calico.yaml
+
+kubectl apply -f calico.yaml
+
+kubectl taint nodes --all node-role.kubernetes.io/control-plane:NoSchedule-
+
+
+
+
 cat >> ~/.bashrc  <<'EOF'
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
