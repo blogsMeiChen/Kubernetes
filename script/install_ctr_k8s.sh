@@ -3,11 +3,6 @@
 yum update -y
 
 yum install -y iproute-tc
-cat /etc/sysctl.conf <<EOF
-net.bridge.bridge-nf-call-iptables = 1
-EOF
-
-sudo sysctl -p
 
 cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
 [kubernetes]
@@ -91,6 +86,20 @@ mkdir -p /opt/cni/bin
 tar Cxzvf /opt/cni/bin cni-plugins-linux-amd64-v1.1.1.tgz
 
 kubeadm config images pull --v=5
+
+sudo -i
+tee >>  /etc/sysctl.conf <<'EOF'
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+sysctl -p
+exit
+
+cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+sudo sysctl --system
+
 
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --node-name "k8s-master" --v=9
 
