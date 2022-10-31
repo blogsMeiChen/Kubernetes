@@ -77,7 +77,13 @@ EOF
 
 systemctl daemon-reload
 systemctl enable --now containerd
+# install helm 
+wget https://get.helm.sh/helm-v3.10.1-linux-amd64.tar.gz
+tar -zxvf helm-v3.10.1-linux-amd64.tar.gz
+cp  linux-amd64/helm  /usr/bin/
+helm  version
 
+# install rnuc 
 wget https://github.com/opencontainers/runc/releases/download/v1.1.4/runc.amd64
 install -m 755 runc.amd64 /usr/local/sbin/runc
 
