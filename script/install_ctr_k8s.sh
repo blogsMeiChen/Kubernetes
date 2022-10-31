@@ -103,6 +103,9 @@ sudo sysctl --system
 sudo modprobe br_netfilter
 sysctl -p
 
+sudo kubeadm reset -f 
+rm -f .kube/
+
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16 --node-name "k8s-master" --v=9 --ignore-preflight-errors=...
 
 mkdir -p $HOME/.kube
@@ -222,11 +225,13 @@ fi
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
+
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
 [[ -s "/usr/local/rvm/scripts/rvm" ]] && . "/usr/local/rvm/scripts/rvm"
+
 EOF
 
 echo "Installation succeeded..."
