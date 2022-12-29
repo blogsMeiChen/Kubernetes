@@ -49,7 +49,10 @@ advertiseAddress: 1.2.3.4   (修改成成0.0.0.0)
 imageRepository: k8s.gcr.io (这里修改成国内k8s镜像仓库)
 kubernetesVersion: v1.18.0 （这里是自己当前安装k8s版本）
 ```
-
+### 开始修改
+```bash
+sed  -e "s/1.2.3.4/0.0.0.0/g" -e "s/v1.18.0/v1.18.5/g" -e "s/k8s.gcr.io/registry.aliyuncs.com\/google_containers/g" kubeadm-config.yaml  -i
+```
 
 ### 修改之后的参数
 
